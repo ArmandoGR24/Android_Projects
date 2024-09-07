@@ -1,6 +1,9 @@
 package com.codigomaestro.zoom_image;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +12,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ScaleGestureDetector scaleGestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +25,14 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        ImageView imageView = findViewById(R.id.valoimagen);
+        scaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener(imageView));
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        scaleGestureDetector.onTouchEvent(event);
+        return true;
     }
 }
