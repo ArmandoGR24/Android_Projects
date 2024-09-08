@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "731571591915",
+    "project_id": "to-do-app-222c3",
+    "storage_bucket": "to-do-app-222c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731571591915:android:c397e1a58cd8ed2de6fcae",
+        "android_client_info": {
+          "package_name": "com.codigomaestro.taskly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDseB1dSYFqsZRcaUt4MB7UvmgrUG3TUCY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
