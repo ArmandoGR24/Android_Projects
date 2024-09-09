@@ -1,6 +1,8 @@
 package com.codigomaestro.taskly;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -56,6 +58,7 @@ public class AuthActivity extends AppCompatActivity {
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
+                            saveLogin(true);
                             Toast.makeText(AuthActivity.this, "Autenticación exitosa.", Toast.LENGTH_SHORT).show();
                             // Navegar a la siguiente actividad o actualizar la UI
                             Intent intent = new Intent(AuthActivity.this, MainActivity.class);
@@ -73,5 +76,13 @@ public class AuthActivity extends AppCompatActivity {
             finish();
         });
 
+    }
+
+    private void saveLogin(boolean isLogged)
+    {
+        SharedPreferences sharedPref = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean("isLogged", isLogged);
+        editor.apply();
     }
 }

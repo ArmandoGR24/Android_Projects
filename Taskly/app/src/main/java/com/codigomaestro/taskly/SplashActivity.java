@@ -1,6 +1,8 @@
 package com.codigomaestro.taskly;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -27,9 +29,27 @@ public class SplashActivity extends AppCompatActivity {
         });
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Intent intent = new Intent(SplashActivity.this, AuthActivity.class);
-            startActivity(intent);
-            finish();
+
+            if (isLogged())
+            {
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+            else
+            {
+                Intent intent = new Intent(SplashActivity.this, AuthActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
+
         }, tiempo);
+    }
+
+    private boolean isLogged()
+    {
+        SharedPreferences sharedPref = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
+        return sharedPref.getBoolean("isLogged", false);
     }
 }

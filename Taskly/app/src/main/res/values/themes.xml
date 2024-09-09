@@ -6,4 +6,13 @@
     </style>
 
     <style name="Theme.Taskly" parent="Base.Theme.Taskly" />
+
+    <style name="Theme.Taskly.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Taskly.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Taskly.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
