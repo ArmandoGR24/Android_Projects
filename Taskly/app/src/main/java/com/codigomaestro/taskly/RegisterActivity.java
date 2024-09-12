@@ -14,12 +14,16 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText user, pass;
+    private EditText user, pass, repass, userID;
     private Button btn_register;
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +37,26 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
-        user = findViewById(R.id.user_box);
+        user = findViewById(R.id.correo_box);
+        userID = findViewById(R.id.user_box);
         pass = findViewById(R.id.pass_box);
+        repass = findViewById(R.id.repass_box);
+
         btn_register = findViewById(R.id.btn_registrar);
 
         btn_register.setOnClickListener(v -> {
             String email = user.getText().toString();
             String password = pass.getText().toString();
+            String repassword = repass.getText().toString();
 
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(RegisterActivity.this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            else if (repass.equals(password)) {
+                Toast.makeText(RegisterActivity.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -52,6 +65,10 @@ public class RegisterActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(RegisterActivity.this, "Usuario registrado exitosamente.", Toast.LENGTH_SHORT).show();
+                            HashMap<String, Object> data = new HashMap<>();
+                            data.put("name", userID.getText().toString());
+                            data.put("email", user.getEmail());
+                            db.collection("users").document(user.getEmail()).set(data);
                             // Navegar a la siguiente actividad o actualizar la UI
                             Intent intent = new Intent(RegisterActivity.this, AuthActivity.class);
                             startActivity(intent);

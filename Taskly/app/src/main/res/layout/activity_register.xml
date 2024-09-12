@@ -23,7 +23,7 @@
         <View
             android:id="@+id/view2"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="150dp" />
 
         <EditText
             android:id="@+id/user_box"
@@ -31,6 +31,17 @@
             android:layout_height="48dp"
             android:ems="10"
             android:hint="Usuario"
+            android:inputType="text" />
+        <View
+            android:id="@+id/view6"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+        <EditText
+            android:id="@+id/correo_box"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:hint="Correo Electronico"
             android:inputType="text" />
         <View
             android:id="@+id/view4"
@@ -42,6 +53,18 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:hint="Contraseña"
+            android:ems="10"
+            android:inputType="textPassword" />
+        <View
+            android:id="@+id/view5"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <EditText
+            android:id="@+id/repass_box"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Confirma Contraseña"
             android:ems="10"
             android:inputType="textPassword" />
 
