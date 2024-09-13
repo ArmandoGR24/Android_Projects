@@ -1,4 +1,4 @@
-package com.codigomaestro.taskly.ui.gallery;
+package com.codigomaestro.taskly.ui.tareas;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.codigomaestro.taskly.databinding.FragmentGalleryBinding;
+import com.codigomaestro.taskly.databinding.FragmentSlideshowBinding;
 
-public class GalleryFragment extends Fragment {
+public class TasksFragment extends Fragment {
 
-    private FragmentGalleryBinding binding;
+    private FragmentSlideshowBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        GalleryViewModel galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
+        TasksViewModel tasksViewModel =
+                new ViewModelProvider(this).get(TasksViewModel.class);
 
-        binding = FragmentGalleryBinding.inflate(inflater, container, false);
+        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textGallery;
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textSlideshow;
+        tasksViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

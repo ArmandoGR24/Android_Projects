@@ -1,16 +1,16 @@
-package com.codigomaestro.taskly.ui.gallery;
+package com.codigomaestro.taskly.ui.tareas;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class TasksViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public TasksViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("Esta es la pantalla de Tareas");
     }
 
     public LiveData<String> getText() {

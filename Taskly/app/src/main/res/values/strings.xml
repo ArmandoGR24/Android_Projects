@@ -14,4 +14,5 @@
     <string name="inicio">Inicio</string>
     <string name="calendario">Calendario</string>
     <string name="tareas">Tareas</string>
+    <string name="inicio_nav">Inicio</string>
 </resources>

@@ -8,18 +8,18 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.codigomaestro.taskly.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="@string/inicio_nav"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.codigomaestro.taskly.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_calendar"
+        android:name="com.codigomaestro.taskly.ui.calendar.CalendarFragment"
+        android:label="Calendario"
+        tools:layout="@layout/fragment_calendar" />
 
     <fragment
-        android:id="@+id/nav_calendar"
-        android:name="com.codigomaestro.taskly.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_tasks"
+        android:name="com.codigomaestro.taskly.ui.tareas.TasksFragment"
+        android:label="Tareas"
+        tools:layout="@layout/fragment_tasks" />
 </navigation>

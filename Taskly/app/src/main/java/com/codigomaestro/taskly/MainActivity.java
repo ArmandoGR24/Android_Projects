@@ -30,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         binding = ActivityNavBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -49,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_calendar)
+                R.id.nav_home, R.id.nav_calendar, R.id.nav_tasks)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_nav);
@@ -66,8 +64,6 @@ public class MainActivity extends AppCompatActivity {
             user_nav_header.setText(documentSnapshot.getString("name"));
         });
         correo_nav_header.setText(getEmail().toString());
-
-
 
     }
 
