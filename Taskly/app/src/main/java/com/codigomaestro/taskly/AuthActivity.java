@@ -59,6 +59,7 @@ public class AuthActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             saveLogin(true);
+                            saveUser(user.getEmail());
                             Toast.makeText(AuthActivity.this, "Autenticación exitosa.", Toast.LENGTH_SHORT).show();
                             // Navegar a la siguiente actividad o actualizar la UI
                             Intent intent = new Intent(AuthActivity.this, MainActivity.class);
@@ -83,6 +84,14 @@ public class AuthActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean("isLogged", isLogged);
+        editor.apply();
+    }
+
+    private void saveUser(String user)
+    {
+        SharedPreferences sharedPref = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("user", user);
         editor.apply();
     }
 }

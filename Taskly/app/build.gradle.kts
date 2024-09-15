@@ -45,6 +45,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.github.TutorialsAndroid:KAlertDialog:v14.0.19")
+    implementation("com.google.firebase:firebase-firestore")
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.navigation.fragment)
