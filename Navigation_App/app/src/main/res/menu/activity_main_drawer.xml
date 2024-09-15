@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_Horario"
+            android:icon="@drawable/sand_clock"
+            android:title="Horario" />
+        <item
+            android:id="@+id/nav_calificaciones"
+            android:icon="@drawable/notes"
+            android:title="Calificaciones" />
+        <item
+            android:id="@+id/nav_kardex"
+            android:icon="@drawable/kardex"
+            android:title="Kardex" />
+    </group>
+</menu>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_Horario">
+
+    <fragment
+        android:id="@+id/nav_Horario"
+        android:name="com.codigomaestro.navigation_app.ui.horario.HorarioFragment"
+        android:label="Horario"
+        tools:layout="@layout/fragment_horario" />
+
+    <fragment
+        android:id="@+id/nav_calificaciones"
+        android:name="com.codigomaestro.navigation_app.ui.calificaciones.CalificacionesFragment"
+        android:label="Calificaciones"
+        tools:layout="@layout/fragment_calificaciones" />
+
+    <fragment
+        android:id="@+id/nav_kardex"
+        android:name="com.codigomaestro.navigation_app.ui.kardex.KardexFragment"
+        android:label="Kardex"
+        tools:layout="@layout/fragment_kardex" />
+</navigation>
