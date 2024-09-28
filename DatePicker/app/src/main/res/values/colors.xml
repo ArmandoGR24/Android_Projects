@@ -1,0 +1,9 @@
+<resources>
+    <color name="primaryColor">#6200EE</color>
+    <color name="primaryLightColor">#BB86FC</color>
+    <color name="primaryDarkColor">#3700B3</color>
+    <color name="secondaryColor">#03DAC5</color>
+    <color name="backgroundColor">#FFFFFF</color>
+    <color name="textColorLight">#000000</color> <!-- Black for light mode -->
+    <color name="textColorDark" night="true">#FFFFFF</color> <!-- White for dark mode -->
+</resources>
