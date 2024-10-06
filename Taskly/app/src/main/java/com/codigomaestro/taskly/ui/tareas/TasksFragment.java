@@ -10,18 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.codigomaestro.taskly.databinding.FragmentSlideshowBinding;
+import com.codigomaestro.taskly.databinding.FragmentTasksBinding;
 
 public class TasksFragment extends Fragment {
 
-    private FragmentSlideshowBinding binding;
+    private FragmentTasksBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         TasksViewModel tasksViewModel =
                 new ViewModelProvider(this).get(TasksViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentTasksBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textSlideshow;
