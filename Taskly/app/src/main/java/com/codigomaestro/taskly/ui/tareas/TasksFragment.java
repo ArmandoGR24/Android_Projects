@@ -17,9 +17,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-<<<<<<< HEAD
 import com.codigomaestro.taskly.databinding.FragmentTasksBinding;
-=======
+
 import com.codigomaestro.taskly.R;
 import com.codigomaestro.taskly.databinding.FragmentTasksBinding;
 import com.google.android.material.snackbar.Snackbar;
@@ -32,21 +31,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
->>>>>>> a926ed5e867d16fdd0d2a4addeb90ac7204b177f
+
 
 public class TasksFragment extends Fragment {
 
     private FragmentTasksBinding binding;
-<<<<<<< HEAD
-=======
+
     private int selectedDay, selectedMonth, selectedYear;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private String userID = mAuth.getCurrentUser().getUid();
     private List<Map<String, Object>> tasks = new ArrayList<>();
+    private String documentID;
     private TasksAdapter adapter;
->>>>>>> a926ed5e867d16fdd0d2a4addeb90ac7204b177f
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         TasksViewModel tasksViewModel =
@@ -63,6 +60,7 @@ public class TasksFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         FloatingActionButton fab = getActivity().findViewById(R.id.fab);
+        fab.setImageResource(R.drawable.plus);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,7 +82,9 @@ public class TasksFragment extends Fragment {
                     if (task.isSuccessful()) {
                         tasks.clear();
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            tasks.add(document.getData());
+                            Map<String, Object> taskData = document.getData();
+                            taskData.put("id", document.getId()); // Almacena el ID del documento
+                            tasks.add(taskData);
                         }
                         adapter.notifyDataSetChanged();
                     } else {
@@ -139,14 +139,16 @@ public class TasksFragment extends Fragment {
             task.put("materia", subject);
             task.put("fecha_limite", deadline);
             task.put("descripcion", description);
-            db.collection("tareas").add(task);
+            db.collection("tareas").add(task).addOnSuccessListener(documentReference -> {
+                documentID = documentReference.getId();
 
+                // Mostrar Snackbar después de obtener el documentID
+                Snackbar.make(binding.getRoot(), "Tarea agregada: " + taskName + ", " + subject + ", " + deadline + ", " + description + " " + documentID, Snackbar.LENGTH_LONG)
+                        .setAction("Action", null)
+                        .setAnchorView(R.id.fab).show();
+            });
             tasks.add(task);
             adapter.notifyItemInserted(tasks.size() - 1);
-
-            Snackbar.make(binding.getRoot(), "Tarea agregada: " + taskName + ", " + subject + ", " + deadline + ", " + description, Snackbar.LENGTH_LONG)
-                    .setAction("Action", null)
-                    .setAnchorView(R.id.fab).show();
         });
 
         builder.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());

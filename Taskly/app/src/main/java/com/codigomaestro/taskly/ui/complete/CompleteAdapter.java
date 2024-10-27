@@ -1,4 +1,4 @@
-package com.codigomaestro.taskly.ui.tareas;
+package com.codigomaestro.taskly.ui.complete;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,25 +16,25 @@ import com.codigomaestro.taskly.services.Customdb;
 import java.util.List;
 import java.util.Map;
 
-public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHolder> {
+public class CompleteAdapter extends RecyclerView.Adapter<CompleteAdapter.TaskViewHolder> {
 
-    private List<Map<String, Object>> tasks;
+    private List<Map<String, Object>> tasks_complete;
     private Customdb customdb = new Customdb();
 
-    public TasksAdapter(List<Map<String, Object>> tasks) {
-        this.tasks = tasks;
+    public CompleteAdapter(List<Map<String, Object>> tasks) {
+        this.tasks_complete = tasks;
     }
 
     @NonNull
     @Override
     public TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_complete, parent, false);
         return new TaskViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
-        Map<String, Object> task = tasks.get(position);
+        Map<String, Object> task = tasks_complete.get(position);
         holder.taskName.setText((String) task.get("nombre"));
         holder.taskSubject.setText((String) task.get("materia"));
         holder.taskDeadline.setText((String) task.get("fecha_limite"));
@@ -45,25 +45,14 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
         holder.taskCompleted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int currentPosition = holder.getAdapterPosition();
-                if (currentPosition != RecyclerView.NO_POSITION) {
-                    // Muestra el ID del documento
-                    Toast.makeText(v.getContext(), documentID, Toast.LENGTH_SHORT).show();
-                    customdb.deleteTask(documentID, () -> {
-                        tasks.remove(currentPosition);
-                        notifyItemRemoved(currentPosition);
-                        notifyItemRangeChanged(currentPosition, tasks.size());
-                    }, () -> {
-                        Toast.makeText(v.getContext(), "Error al eliminar tarea", Toast.LENGTH_SHORT).show();
-                    });
-                }
+               Toast.makeText(v.getContext(),"Tarea completada", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return tasks.size();
+        return tasks_complete.size();
     }
 
     public static class TaskViewHolder extends RecyclerView.ViewHolder {
@@ -72,10 +61,10 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
 
         public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
-            taskName = itemView.findViewById(R.id.task_name);
-            taskSubject = itemView.findViewById(R.id.task_subject);
-            taskDeadline = itemView.findViewById(R.id.task_deadline);
-            taskDescription = itemView.findViewById(R.id.task_description);
+            taskName = itemView.findViewById(R.id.task_complete_name);
+            taskSubject = itemView.findViewById(R.id.task_complete_subject);
+            taskDeadline = itemView.findViewById(R.id.task_complete_deadline);
+            taskDescription = itemView.findViewById(R.id.task_complete_description);
             taskCompleted = itemView.findViewById(R.id.btn_task_complete);
         }
     }

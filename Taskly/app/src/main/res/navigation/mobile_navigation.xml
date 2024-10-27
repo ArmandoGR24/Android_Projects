@@ -22,4 +22,9 @@
         android:name="com.codigomaestro.taskly.ui.tareas.TasksFragment"
         android:label="Tareas"
         tools:layout="@layout/fragment_tasks" />
+    <fragment
+        android:id="@+id/nav_tasks_completes"
+        android:name="com.codigomaestro.taskly.ui.complete.CompleteFragment"
+        android:label="Tareas Completas"
+        tools:layout="@layout/fragment_complete" />
 </navigation>

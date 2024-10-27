@@ -16,5 +16,9 @@
             android:id="@+id/nav_tasks"
             android:icon="@drawable/checklist"
             android:title="@string/tareas" />
+        <item
+            android:id="@+id/nav_tasks_completes"
+            android:icon="@drawable/check"
+            android:title="@string/tareas_completadas" />
     </group>
 </menu>
